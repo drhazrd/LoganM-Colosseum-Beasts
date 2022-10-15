@@ -5,9 +5,10 @@ using UnityEngine.InputSystem;
 
 public class CharacterMovment : MonoBehaviour
 {
+    public float gravityScale = -9.87f;
     public CharacterController controller;
-    public float moveSpeed = 3;
-    float jumpPower = 4f;
+    public float moveSpeed;
+    public float jumpPower = 4f;
     public bool issprinting;
     public bool isMoving;
     private float sprintSpeed = 6;
@@ -43,28 +44,25 @@ public class CharacterMovment : MonoBehaviour
     {
         isGrounded = controller.isGrounded;
         HandleInput();
-        playerMovement = new Vector3(movement.x * moveSpeed, 0, movement.y * moveSpeed);
-        controller.SimpleMove(playerMovement);
+        HandleMovement();
+    }
 
+    void HandleMovement(){
+        Vector3 playerMove = new Vector3(movement.x , 0, movement.y);
+        controller.Move(playerMove *Time.deltaTime*moveSpeed);
+        if(!controller.isGrounded){
+            playerMovement.y += gravityScale * Time.deltaTime; 
+        }else if(!controller.isGrounded){
+
+
+        }
+        controller.Move(playerMovement *Time.deltaTime);
         if(movement.sqrMagnitude > 0.0f){
             isMoving = true;
-        Quaternion newrotation = Quaternion.LookRotation(playerMovement,Vector3.up);
+        Quaternion newrotation = Quaternion.LookRotation(playerMove,Vector3.up);
         model.transform.rotation = Quaternion.RotateTowards(model.transform.rotation, newrotation, rotationSpeed * Time.deltaTime );
         }else
             isMoving = false;
-        
-        if (Input.GetKeyDown(KeyCode.LeftShift)){
-            issprinting = true;
-        }
-        if (Input.GetKeyDown(KeyCode.Q)){
-            
-        }
-            else issprinting = false;
-        if (issprinting) {
-            moveSpeed = sprintSpeed;
-            Debug.Log("shift"); 
-        }
-        else { moveSpeed = sprintSpeed / 2; } 
     }
     void HandleInput(){
         movement = controls.Player.Move.ReadValue<Vector2>();		
@@ -80,6 +78,7 @@ public class CharacterMovment : MonoBehaviour
         _anim.SetTrigger("Attack");
     }
     public void Jump(){
-        playerMovement = new Vector3(movement.x, jumpPower, movement.y);
+        Debug.Log("Jump"); 
+        controller.Move(new Vector3 (playerMovement.x, jumpPower, playerMovement.z));
     }
 }
