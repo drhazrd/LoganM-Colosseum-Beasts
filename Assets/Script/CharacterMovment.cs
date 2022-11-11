@@ -51,7 +51,7 @@ public class CharacterMovment : MonoBehaviour
         Vector3 playerMove = new Vector3(movement.x , 0, movement.y);
         controller.Move(playerMove *Time.deltaTime*moveSpeed);
         if(!controller.isGrounded){
-            playerMovement.y += gravityScale * Time.deltaTime; 
+            playerMovement.y += (gravityScale * Time.deltaTime); 
         }else if(!controller.isGrounded){
 
 

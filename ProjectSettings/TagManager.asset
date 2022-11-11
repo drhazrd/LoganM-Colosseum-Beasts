@@ -3,12 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - uneatable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - POstPtossecing
   - Water
   - UI
   - 
