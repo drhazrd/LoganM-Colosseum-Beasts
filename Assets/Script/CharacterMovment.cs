@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class CharacterMovment : MonoBehaviour
 {
+    public static event PlayerSpawned onPlayerSpawned;
+    public delegate void PlayerSpawned(CharacterMovment character);
     public float gravityScale = -9.87f;
     public CharacterController controller;
     public float moveSpeed;
@@ -29,6 +31,7 @@ public class CharacterMovment : MonoBehaviour
     {
         _anim = GetComponentInChildren<Animator>();
         pi = GetComponent<PlayerInput>();
+        onPlayerSpawned?.Invoke(this);
         controls.Player.Fire.performed += _ => Attack();
         controls.Player.Jump.performed += _ => Jump();
     }

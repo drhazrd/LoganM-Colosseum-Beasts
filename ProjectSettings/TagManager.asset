@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - uneatable
+  - SpawnPoint
+  - Patrol Point
+  - EnemySpawn
+  - Sidekick
   layers:
   - Default
   - TransparentFX
@@ -14,7 +18,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Ground
   - 
   - 
   - 

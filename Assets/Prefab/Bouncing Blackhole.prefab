@@ -4826,6 +4826,7 @@ GameObject:
   - component: {fileID: 6732505019811196127}
   - component: {fileID: 6732505019811196112}
   - component: {fileID: 6732505019811196113}
+  - component: {fileID: 1255995149}
   m_Layer: 0
   m_Name: Bouncing Blackhole
   m_TagString: Untagged
@@ -4864,7 +4865,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6732505019811196114}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -4908,7 +4909,7 @@ SphereCollider:
   m_GameObject: {fileID: 6732505019811196114}
   m_Material: {fileID: 13400000, guid: 70dce5754e8f7dd4dad0a924c44a1e70, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -4924,6 +4925,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28fcfe6d15494d43a9063dca44a30ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thrust: 400
+  playerPos: {fileID: 0}
 --- !u!54 &6732505019811196113
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4935,8 +4938,21 @@ Rigidbody:
   m_Mass: 0.5
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1255995149
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6732505019811196114}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
